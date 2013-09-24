@@ -5,7 +5,10 @@ section.edit-context-container {
 
 .sprite-edit-panel {
 	position : relative;
+}
 
+.sprite-view-panel {
+	position : relative;
 }
 
 .sprite-edit-panel .rendered-sprite-container {
