@@ -1,10 +1,10 @@
-define( [ 'sprite/EditableSprite' ], function( EditableSprite ) {
+define( [ 'sprite/EditableSpriteFrame' ], function( EditableSpriteFrame ) {
 
 	var EditContext = function( options ) {
 
 		var self = this;
 
-		this.sprite = ko.observable();
+		this.spriteFrame = ko.observable();
 
 		this.editPanel = options.editPanel;
 		this.viewPanel = options.viewPanel;
@@ -16,21 +16,21 @@ define( [ 'sprite/EditableSprite' ], function( EditableSprite ) {
 
 		this.currentTool = ko.observable( this.tools[ 0 ] );
 
-		this.setSprite = function( sprite ) {
-			self.sprite( new EditableSprite( sprite ) );
+		this.setSpriteFrame = function( spriteFrame ) {
+			self.spriteFrame( new EditableSpriteFrame( spriteFrame ) );
 		};
 
 		this.draw = function( pixel ) {
-			if ( self.sprite() ) {
-				self.sprite().draw( pixel );
+			if ( self.spriteFrame() ) {
+				self.spriteFrame().draw( pixel );
 
 				self.setDirty();
 			}
 		};
 
 		this.erase = function( pixel ) {
-			if ( self.sprite() ) {
-				self.sprite().erase( pixel );
+			if ( self.spriteFrame() ) {
+				self.spriteFrame().erase( pixel );
 
 				self.setDirty();
 			}
@@ -47,7 +47,7 @@ define( [ 'sprite/EditableSprite' ], function( EditableSprite ) {
 		this.setDirty = function() {
 			self.editPanel.dirty( true );
 			self.viewPanel.dirty( true );
-		}
+		};
 
 	};
 

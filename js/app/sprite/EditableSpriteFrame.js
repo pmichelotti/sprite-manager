@@ -1,15 +1,15 @@
-define( [ 'sprite/Sprite', 'sprite/VirtualPixel' ], function( Sprite, VirtualPixel ) {
+define( [ 'sprite/SpriteFrame', 'sprite/VirtualPixel' ], function( SpriteFrame, VirtualPixel ) {
 
-	var EditableSprite = function( sprite ) {
+	var EditableSpriteFrame = function( spriteFrame ) {
 
 		var self = this;
 
-		this.sprite = sprite;
+		this.spriteFrame = spriteFrame;
 
-		this.newName = ko.observable( sprite.name );
-		this.newSize = ko.observable( sprite.size );
+		this.newName = ko.observable( spriteFrame.name );
+		this.newSize = ko.observable( spriteFrame.size );
 		this.size = this.newSize;
-		this.newPixelSize = ko.observable( sprite.pixelSize );
+		this.newPixelSize = ko.observable( spriteFrame.pixelSize );
 		this.pixelSize = this.newPixelSize;
 
 		this.pixels = null;
@@ -21,8 +21,8 @@ define( [ 'sprite/Sprite', 'sprite/VirtualPixel' ], function( Sprite, VirtualPix
 				var curYArray = Array();
 
 				for ( var curY = 0; curY < self.newSize().height; curY++ ) {
-					if ( self.sprite.pixels && self.sprite.pixels[ curX ][ curY ] ) {
-						curYArray.push( self.sprite.pixels[ curX ][ curY ] );
+					if ( self.spriteFrame.pixels && self.spriteFrame.pixels[ curX ][ curY ] ) {
+						curYArray.push( self.spriteFrame.pixels[ curX ][ curY ] );
 					}
 					else {
 						curYArray.push( new VirtualPixel( { x : curX, y : curY } ) );
@@ -81,19 +81,19 @@ define( [ 'sprite/Sprite', 'sprite/VirtualPixel' ], function( Sprite, VirtualPix
 
 		this.save = function() {
 
-			var newSprite = new Sprite( self.sprite.id, {
+			var newSpriteFrame = new SpriteFrame( self.spriteFrame.id, {
 				name : self.newName(),
 				size : self.newSize(),
 				pixelSize : self.newPixelSize(),
 				pixels : self.pixels
 			} );
 
-			return newSprite;
+			return newSpriteFrame;
 
 		};
 
 	};
 
-	return EditableSprite;
+	return EditableSpriteFrame;
 
 } );

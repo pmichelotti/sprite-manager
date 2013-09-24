@@ -55,7 +55,7 @@ define( [], function() {
 
 		this.render = function( container ) {
 			if ( self.spriteRenderer ) {
-				var renderedDom = self.spriteRenderer.render( editContext.sprite(), self.zoom(), self );
+				var renderedDom = self.spriteRenderer.render( editContext.spriteFrame(), self.zoom(), self );
 
 				var $container = $( container );
 

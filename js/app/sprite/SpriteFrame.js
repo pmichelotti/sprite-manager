@@ -1,7 +1,6 @@
 define( [ 'sprite/Size', 'sprite/VirtualPixel' ], function( Size, VirtualPixel ) {
 
-	var Sprite = function( id, options ) {
-		var self = this;
+	var SpriteFrame = function( id, options ) {
 
 		options = options || {};
 
@@ -18,6 +17,6 @@ define( [ 'sprite/Size', 'sprite/VirtualPixel' ], function( Size, VirtualPixel )
 
 	};
 
-	return Sprite;
+	return SpriteFrame;
 
 } );

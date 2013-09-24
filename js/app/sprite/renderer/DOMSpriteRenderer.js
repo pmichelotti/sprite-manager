@@ -2,10 +2,10 @@ define( [], function() {
 
 	var DOMSpriteRenderer = function() {
 
-		this.render = function( sprite, scale, context ) {
+		this.render = function( spriteFrame, scale, context ) {
 
-			var spriteSize = sprite.size;
-			var spritePixelSize = sprite.pixelSize;
+			var spriteSize = spriteFrame.size;
+			var spritePixelSize = spriteFrame.pixelSize;
 
 			if ( typeof spriteSize === 'function' ) {
 				spriteSize = spriteSize();
@@ -23,7 +23,7 @@ define( [], function() {
 			} ).addClass( 'rendered-sprite-container' );
 
 			var renderPixel = function( x, y ) {
-				var curPixel = sprite.pixels[ x ][ y ];
+				var curPixel = spriteFrame.pixels[ x ][ y ];
 
 				var renderedPixel = $( '<div>' ).css( {
 					width : spritePixelSize * ( scale + 1 ),

@@ -5,8 +5,8 @@ define( [
           'editcontext/panel/Pallet',
           'editcontext/tool/Pencil',
           'sprite/renderer/DOMSpriteRenderer',
-          'sprite/Sprite' ],
-		function( EditContext, EditPanel, ViewPanel, Pallet, Pencil, DOMSpriteRenderer, Sprite ) {
+          'sprite/SpriteFrame' ],
+		function( EditContext, EditPanel, ViewPanel, Pallet, Pencil, DOMSpriteRenderer, SpriteFrame ) {
 
 	var spriteRenderer = new DOMSpriteRenderer();
 
@@ -30,7 +30,7 @@ define( [
 			pallet : pallet
 	} );
 
-	editContext.setSprite( new Sprite( 'test-1' ) );
+	editContext.setSpriteFrame( new SpriteFrame( 'test-1' ) );
 
 	ko.applyBindings( editContext );
 
