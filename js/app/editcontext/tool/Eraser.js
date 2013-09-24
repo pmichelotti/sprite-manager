@@ -1,10 +1,10 @@
 define( [ 'sprite/VirtualPixel' ], function( VirtualPixel ) {
 
-	var Pencil = function() {
+	var Eraser = function() {
 
-		this.name = "Pencil";
-		this.id = "pencil-tool";
-		this.icon = "glyphicon-pencil";
+		this.name = "Eraser";
+		this.id = "eraser-tool";
+		this.icon = "glyphicon-asterisk";
 
 		this.listeners = {
 			"click" : function( event, editContext, eventEliciter, parameters ) {
@@ -14,7 +14,7 @@ define( [ 'sprite/VirtualPixel' ], function( VirtualPixel ) {
 				if ( eventEliciter && eventEliciter.draw && parameters.pixel ) {
 					var pixel = parameters.pixel;
 
-					var newPixel = new VirtualPixel( { x : pixel.position.x, y : pixel.position.y }, editContext.pallet.color(), editContext.pallet.opacity() );
+					var newPixel = new VirtualPixel( { x : pixel.position.x, y : pixel.position.y }, '#FFFFFF', 0 );
 					eventEliciter.draw( newPixel );
 				}
 			}
@@ -22,6 +22,6 @@ define( [ 'sprite/VirtualPixel' ], function( VirtualPixel ) {
 
 	};
 
-	return Pencil;
+	return Eraser;
 
 } );

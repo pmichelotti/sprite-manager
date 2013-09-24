@@ -32,8 +32,8 @@
 								</div>
 								<div class="tool-panel">
 									<h3>Tools</h3>
-									<ul data-bind="foreach: tools">
-										<li data-bind="text: name, click: $parent.currentTool( $data )"></li>
+									<ul class="tool-list" data-bind="foreach: tools">
+										<li data-bind="click: $parent.currentTool"><i data-bind="attr: { 'class' : 'glyphicon ' + icon }"></i></li>
 									</ul>
 									<p data-bind="with: currentTool"><em>Current Tool: </em><span data-bind="text: name"></span></p>
 								</div>
@@ -61,12 +61,12 @@
 					<div class="sprite-frames-container">
 						<h3>Frames</h3>
 						<div data-bind="with: sprite">
-							<ul data-bind="foreach: spriteFrames">
+							<ul class="sprite-frame-list" data-bind="foreach: spriteFrames">
 								<li>
-									<em data-bind="text: name"></em>
-									<button type="button" class="btn btn-primary" data-bind="click: function() { $root.editFrame( $data ); }">Edit</button>
-									<button type="button" class="btn btn-primary">Copy</button>
-									<button type="button" class="btn btn-warning">Delete</button>
+									<span class="sprite-frame-name" data-bind="text: name"></span>
+									<button type="button" class="btn btn-primary" data-bind="click: $root.editFrame"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button type="button" class="btn btn-primary" data-bind="click: $root.copyFrame"><span class="glyphicon glyphicon-plus"></span></button>
+									<button type="button" class="btn btn-warning" data-bind="click: $root.deleteFrame"><span class="glyphicon glyphicon-trash"></span></button>
 								</li>
 							</ul>
 						</div>
@@ -80,6 +80,24 @@
 					<!-- END FRAMES -->
 
 					<!-- START GROUPS -->
+					<div class="sprite-groups-container">
+						<h3>Groups</h3>
+						<div data-bind="with: sprite">
+							<ul class="sprite-group-list" data-bind="foreach: spriteFrameGroups">
+								<li>
+									<span class="sprite-group-name" data-bind="text: name"></span>
+									<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-trash"></span></button>
+								</li>
+							</ul>
+						</div>
+						<div data-bind="with: newGroupForm">
+							<form data-bind="submit: submit">
+								<input type="text" name="name" data-bind="value: name" />
+								<button type="submit" class="btn btn-primary">New Group</button>
+							</form>
+						</div>
+					</div>
 					<!-- END GROUPS -->
 				</div>
 			</div>

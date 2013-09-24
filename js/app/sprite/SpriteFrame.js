@@ -20,7 +20,7 @@ define( [ 'sprite/Size', 'sprite/VirtualPixel', 'util/uniqueIdUtil' ], function(
 	SpriteFrame.createAsCopy = function( options ) {
 
 		var name = options.name || options.spriteFrame.name + " copy";
-		var id = options.id || uniqueIdUtil.getId( name );
+		var id = options.id || uniqueIdUtil( name );
 		var size = new Size( options.spriteFrame.size.width, options.spriteFrame.size.height );
 		var pixelSize = options.spriteFrame.pixelSize;
 

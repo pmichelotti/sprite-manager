@@ -18,3 +18,28 @@ section.edit-context-container {
 .rendered-sprite-pixel:hover {
 	box-shadow : 5 -5 #CCCCFF inset;
 }
+
+.tool-panel .tool-list {
+	list-style-type : none;
+	padding : 0px;
+}
+
+.tool-panel .tool-list > li {
+	padding : 5px 0px;
+}
+
+/* Sprite Frame List */
+.sprite-frames-container .sprite-frame-list {
+	list-style-type : none;
+	padding : 0px;
+}
+
+.sprite-frames-container .sprite-frame-list > li {
+	padding : 10px;
+}
+
+/* Sprite Group List */
+.sprite-groups-container .sprite-group-list {
+	list-style-type : none;
+	padding : 0px;
+}

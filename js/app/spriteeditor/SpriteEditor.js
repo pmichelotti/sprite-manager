@@ -20,6 +20,17 @@ define( [ 'sprite/EditableSprite', 'util/uniqueIdUtil' ], function( EditableSpri
 
 		};
 
+		this.newGroupForm = new function() {
+
+			var groupSelf = this;
+
+			this.name = ko.observable();
+
+			this.submit = function() {
+				self.addGroup( groupSelf.name() );
+			};
+		};
+
 		this.setSprite = function( sprite ) {
 			this.sprite( new EditableSprite( sprite ) );
 		};
@@ -49,6 +60,13 @@ define( [ 'sprite/EditableSprite', 'util/uniqueIdUtil' ], function( EditableSpri
 		this.saveCurrentSpriteFrame = function() {
 			var newSpriteFrame = self.spriteFrameEditContext.spriteFrame().save();
 			self.sprite().updateSpriteFrame( newSpriteFrame );
+		};
+
+		this.addGroup = function( name ) {
+			self.sprite().addSpriteFrameGroup( {
+				id : uniqueIdUtil( name ),
+				name : name
+			} );
 		};
 	};
 

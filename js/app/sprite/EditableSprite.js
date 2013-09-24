@@ -94,7 +94,7 @@ define(
 				name : options.name
 			} );
 
-			self.push( new EditableSpriteFrameGroup( spriteFrameGroup ) );
+			self.spriteFrameGroups.push( new EditableSpriteFrameGroup( spriteFrameGroup ) );
 		};
 
 		this.removeSpriteFrameGroup = function( spriteFrameGroup ) {
