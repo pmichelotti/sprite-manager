@@ -1,0 +1,2 @@
+Small Sprite Manager Prototype
+------------------------------

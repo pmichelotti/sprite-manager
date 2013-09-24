@@ -1,0 +1,17 @@
+/* Edit Context */
+section.edit-context-container {
+	margin : 25px;
+}
+
+.sprite-edit-panel {
+	position : relative;
+
+}
+
+.sprite-edit-panel .rendered-sprite-container {
+	background-image:url( '../img/sprite-editor-background.png' );
+}
+
+.rendered-sprite-pixel:hover {
+	box-shadow : 5 -5 #CCCCFF inset;
+}
