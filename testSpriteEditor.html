@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test Edit Context</title>
+		<script type="text/javascript" src="js/libs/jquery-2.0.3.js"></script>
+
+		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+		<link href="css/app.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+
+		<section class="sprite-editor-container">
+			<div class="row">
+				<div class="col-md-8">
+					<h2 data-bind="with: sprite"><span data-bind="text: name"></span></h2>
+					<!-- START EDIT CONTEXT -->
+
+					<section class="edit-context-container" data-bind="with: spriteFrameEditContext">
+
+						<div class="row">
+							<div class="col-md-8">
+								<div class="sprite-edit-panel" data-bind="spritearea: editPanel">
+								</div>
+								<div class="sprite-frame-tool-bar">
+									<span data-bind="with: spriteFrame">Editing <em data-bind="text: name"></em></span>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="view-panel-container">
+									<h3>View</h3>
+									<div class="sprite-view-panel" data-bind="spritearea: viewPanel"></div>
+								</div>
+								<div class="tool-panel">
+									<h3>Tools</h3>
+									<ul data-bind="foreach: tools">
+										<li data-bind="text: name, click: $parent.currentTool( $data )"></li>
+									</ul>
+									<p data-bind="with: currentTool"><em>Current Tool: </em><span data-bind="text: name"></span></p>
+								</div>
+								<div class="pallet-panel" data-bind="with: pallet">
+									<h3>Pallet</h3>
+									<form>
+										<input type="color" name="color" data-bind="value: color" />
+										<input type="number" min="0" max="1" step="0.1" name="opacity" value="1" data-bind="value: opacity" />
+									</form>
+								</div>
+							</div>
+						</div>
+
+
+					</section>
+
+					<div class="sprite-edit-context-toolbar">
+						<button type="button" class="btn btn-success" data-bind="click: saveCurrentSpriteFrame">Save</button>
+					</div>
+
+					<!-- END EDIT CONTEXT -->
+				</div>
+				<div class="col-md-4">
+					<!-- START FRAMES -->
+					<div class="sprite-frames-container">
+						<h3>Frames</h3>
+						<div data-bind="with: sprite">
+							<ul data-bind="foreach: spriteFrames">
+								<li>
+									<em data-bind="text: name"></em>
+									<button type="button" class="btn btn-primary" data-bind="click: function() { $root.editFrame( $data ); }">Edit</button>
+									<button type="button" class="btn btn-primary">Copy</button>
+									<button type="button" class="btn btn-warning">Delete</button>
+								</li>
+							</ul>
+						</div>
+						<div data-bind="with: newFrameForm">
+							<form data-bind="submit: submit">
+								<input type="text" name="name" data-bind="value: name" />
+								<button type="submit" class="btn btn-primary">New Frame</button>
+							</form>
+						</div>
+					</div>
+					<!-- END FRAMES -->
+
+					<!-- START GROUPS -->
+					<!-- END GROUPS -->
+				</div>
+			</div>
+		</section>
+
+		<script type="text/javascript" src="js/libs/knockout-2.3.0.debug.js"></script>
+		<script type="text/javascript" src="js/kobindings/bindings.js"></script>
+		<script src="js/libs/bootstrap.js"></script>
+		<script type="text/javascript" src="js/libs/require.js" data-main="js/app/spriteEditor"></script>
+	</body>
+</html>

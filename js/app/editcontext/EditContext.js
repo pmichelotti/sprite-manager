@@ -18,6 +18,7 @@ define( [ 'sprite/EditableSpriteFrame' ], function( EditableSpriteFrame ) {
 
 		this.setSpriteFrame = function( spriteFrame ) {
 			self.spriteFrame( new EditableSpriteFrame( spriteFrame ) );
+			self.setDirty();
 		};
 
 		this.draw = function( pixel ) {

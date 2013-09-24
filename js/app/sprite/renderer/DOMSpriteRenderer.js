@@ -4,6 +4,10 @@ define( [], function() {
 
 		this.render = function( spriteFrame, scale, context ) {
 
+			if ( !spriteFrame ) {
+				return $( '<div>' ).addClass( 'rendered-sprite-container' );
+			}
+
 			var spriteSize = spriteFrame.size;
 			var spritePixelSize = spriteFrame.pixelSize;
 

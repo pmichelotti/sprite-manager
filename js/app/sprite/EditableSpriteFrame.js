@@ -7,6 +7,7 @@ define( [ 'sprite/SpriteFrame', 'sprite/VirtualPixel' ], function( SpriteFrame, 
 		this.spriteFrame = spriteFrame;
 
 		this.newName = ko.observable( spriteFrame.name );
+		this.name = this.newName;
 		this.newSize = ko.observable( spriteFrame.size );
 		this.size = this.newSize;
 		this.newPixelSize = ko.observable( spriteFrame.pixelSize );

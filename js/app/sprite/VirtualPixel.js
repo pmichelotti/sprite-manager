@@ -8,6 +8,16 @@ define( [], function() {
 
 	};
 
+	VirtualPixel.createAsCopy = function( pixel ) {
+
+		var position = { x : pixel.position.x, y : pixel.position.y };
+		var color = pixel.color;
+		var opacity = pixel.opacity;
+
+		return new VirtualPixel( position, color, opacity );
+
+	};
+
 	return VirtualPixel;
 
 } );
