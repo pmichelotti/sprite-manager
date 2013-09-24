@@ -5,11 +5,12 @@ define( [
           'editcontext/panel/Pallet',
           'editcontext/tool/Pencil',
           'editcontext/tool/Eraser',
+          'editcontext/tool/EyeDropper',
           'sprite/renderer/DOMSpriteRenderer',
           'sprite/SpriteFrame',
           'spriteeditor/SpriteEditor',
           'sprite/Sprite' ],
-		function( EditContext, EditPanel, ViewPanel, Pallet, Pencil, Eraser, DOMSpriteRenderer, SpriteFrame, SpriteEditor, Sprite ) {
+		function( EditContext, EditPanel, ViewPanel, Pallet, Pencil, Eraser, EyeDropper, DOMSpriteRenderer, SpriteFrame, SpriteEditor, Sprite ) {
 
 	var spriteRenderer = new DOMSpriteRenderer();
 
@@ -23,6 +24,7 @@ define( [
 
 	var pencil = new Pencil();
 	var eraser = new Eraser();
+	var eyeDropper = new EyeDropper();
 
 	var pallet = new Pallet();
 
@@ -30,7 +32,7 @@ define( [
 	var editContext = new EditContext( {
 			editPanel : editPanel,
 			viewPanel : viewPanel,
-			tools : [ pencil, eraser ],
+			tools : [ pencil, eraser, eyeDropper ],
 			pallet : pallet
 	} );
 
