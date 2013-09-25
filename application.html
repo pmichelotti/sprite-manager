@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test Edit Context</title>
+		<script type="text/javascript" src="js/libs/jquery-2.0.3.js"></script>
+
+		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+		<link href="css/app.css" rel="stylesheet" media="screen">
+	</head>
+	<body>
+
+		<div class="application-container container" data-bind="visible: isProjectListMode">
+
+			<div class="application-inner-container">
+				<ul class="project-list" data-bind="foreach: projects">
+					<li data-bind="click: $parent.editProject"><span data-bind="text: name"></span></li>
+				</ul>
+				<div data-bind="with: projectForm">
+					<form data-bind="submit: submit">
+						<input type="text" name="name" data-bind="value: name" />
+						<button type="submit" class="btn btn-primary">New Project</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+		<!-- START SPRITE LIST VIEW -->
+		<section class="project-sprite-view" data-bind="visible: isProjectSpriteListMode">
+			<div class="return-to-project-list-button" data-bind="click: returnToProjectListView"><i class="glyphicon glyphicon-backward"></i> Project List</div>
+			<div data-bind="with: projectEditor">
+				<h1 data-bind="with: project"><span data-bind="text: name"></span></h1>
+
+				<div class="sprite-list-container" data-bind="with: project">
+					<ul data-bind="foreach: sprites">
+						<li>
+							<span data-bind="text: name"></span>
+							<button class="btn btn-primary" data-bind="click: $parents[1].editSprite"><i class="glyphicon glyphicon-pencil"></i></button>
+							<button class="btn btn-warning" data-bind="click: $parents[1].removeSprite"><i class="glyphicon glyphicon-trash"></i></button>
+						</li>
+					</ul>
+				</div>
+				<div data-bind="with: spriteForm">
+					<form data-bind="submit: submit">
+						<input type="text" name="name" data-bind="value: name" />
+						<button type="submit" class="btn btn-primary">New Sprite</button>
+					</form>
+				</div>
+			</div>
+		</section>
+		<!-- END SPRITE LIST VIEW -->
+
+		<!-- START SPRITE EDIT VIEW -->
+		<section class="sprite-edit-view" data-bind="visible: isProjectSpriteEditMode">
+			<div class="return-to-project-sprite-list-mode" data-bind="click: projectEditor.returnToSpriteView"><i class="glyphicon glyphicon-backward"></i> Sprite List</div>
+
+			<section class="sprite-editor-container" data-bind="with: projectEditor.spriteEditor">
+				<div class="row">
+					<div class="col-md-8">
+						<h2 data-bind="with: sprite"><span data-bind="text: name"></span></h2>
+						<!-- START EDIT CONTEXT -->
+
+						<section class="edit-context-container" data-bind="with: spriteFrameEditContext">
+
+							<div class="row">
+								<div class="col-md-8">
+									<div class="sprite-edit-panel" data-bind="spritearea: editPanel">
+									</div>
+									<div class="sprite-frame-tool-bar">
+										<span data-bind="with: spriteFrame">Editing <em data-bind="text: name"></em></span>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="view-panel-container">
+										<h3>View</h3>
+										<div class="sprite-view-panel" data-bind="spritearea: viewPanel"></div>
+									</div>
+									<div class="tool-panel">
+										<h3>Tools</h3>
+										<ul class="tool-list" data-bind="foreach: tools">
+											<li data-bind="click: $parent.currentTool"><i data-bind="attr: { 'class' : 'glyphicon ' + icon }"></i></li>
+										</ul>
+										<p data-bind="with: currentTool"><em>Current Tool: </em><span data-bind="text: name"></span></p>
+									</div>
+									<div class="pallet-panel" data-bind="with: pallet">
+										<h3>Pallet</h3>
+										<form>
+											<input type="color" name="color" data-bind="value: color" />
+											<input type="number" min="0" max="1" step="0.1" name="opacity" value="1" data-bind="value: opacity" />
+										</form>
+									</div>
+								</div>
+							</div>
+
+
+						</section>
+
+						<div class="sprite-edit-context-toolbar">
+							<button type="button" class="btn btn-success" data-bind="click: saveCurrentSpriteFrame">Save</button>
+						</div>
+
+						<!-- END EDIT CONTEXT -->
+					</div>
+					<div class="col-md-4">
+						<!-- START FRAMES -->
+						<div class="sprite-frames-container">
+							<h3>Frames</h3>
+							<div data-bind="with: sprite">
+								<ul class="sprite-frame-list" data-bind="foreach: spriteFrames">
+									<li>
+										<span class="sprite-frame-name" data-bind="text: name"></span>
+										<button type="button" class="btn btn-primary" data-bind="click: $parents[1].editFrame"><span class="glyphicon glyphicon-pencil"></span></button>
+										<button type="button" class="btn btn-primary" data-bind="click: $parents[1].copyFrame"><span class="glyphicon glyphicon-plus"></span></button>
+										<button type="button" class="btn btn-warning" data-bind="click: $parents[1].deleteFrame"><span class="glyphicon glyphicon-trash"></span></button>
+									</li>
+								</ul>
+							</div>
+							<div data-bind="with: newFrameForm">
+								<form data-bind="submit: submit">
+									<input type="text" name="name" data-bind="value: name" />
+									<button type="submit" class="btn btn-primary">New Frame</button>
+								</form>
+							</div>
+						</div>
+						<!-- END FRAMES -->
+
+						<!-- START GROUPS -->
+						<div class="sprite-groups-container">
+							<h3>Groups</h3>
+							<div data-bind="with: sprite">
+								<ul class="sprite-group-list" data-bind="foreach: spriteFrameGroups">
+									<li>
+										<span class="sprite-group-name" data-bind="text: name"></span>
+										<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
+										<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-trash"></span></button>
+									</li>
+								</ul>
+							</div>
+							<div data-bind="with: newGroupForm">
+								<form data-bind="submit: submit">
+									<input type="text" name="name" data-bind="value: name" />
+									<button type="submit" class="btn btn-primary">New Group</button>
+								</form>
+							</div>
+						</div>
+						<!-- END GROUPS -->
+					</div>
+				</div>
+			</section>
+		</section>
+
+		<!-- END SPRITE EDIT VIEW -->
+
+		<script type="text/javascript" src="js/libs/knockout-2.3.0.debug.js"></script>
+		<script type="text/javascript" src="js/kobindings/bindings.js"></script>
+		<script src="js/libs/bootstrap.js"></script>
+		<script type="text/javascript" src="js/libs/require.js" data-main="js/app/application"></script>
+	</body>
+</html>
