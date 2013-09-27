@@ -151,6 +151,14 @@ body {
   background-color: #40c0cb;
   padding: 10px;
 }
+.sprite-edit-view .sprite-edit-tool-bar .return-to-project-sprite-list-mode {
+  color: #f9f2e7;
+  font-size: 20px;
+  cursor: pointer;
+}
+.sprite-edit-view .sprite-edit-tool-bar .return-to-project-sprite-list-mode:hover {
+  color: #f6ebdb;
+}
 /* SPRITE EDITING CONTEXT */
 .sprite-edit-view .sprite-editor-container {
   padding: 25px;
@@ -161,6 +169,13 @@ body {
 .sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel,
 .sprite-view-panel {
   position: relative;
+}
+.sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel {
+  background-color: #ffffff;
+  overflow: scroll;
+}
+.sprite-edit-view .sprite-editor-container .edit-context-container .sprite-view-panel .rendered-sprite-container {
+  background-color: #ffffff;
 }
 .sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel .rendered-sprite-container {
   background-image: url('../img/sprite-editor-background.png');

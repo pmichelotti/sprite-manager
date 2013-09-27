@@ -35,7 +35,10 @@ define(
 					throw "When adding a sprite either an existing sprite or an id and a name must be specified";
 				}
 
-				newSpriteFrame = new SpriteFrame( options.id, { name : options.name } );
+				newSpriteFrame = new SpriteFrame( options.id, {
+					name : options.name,
+					size : options.size,
+					pixelSize : options.pixelSize } );
 
 				self.spriteFrames.push( newSpriteFrame );
 

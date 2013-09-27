@@ -157,6 +157,10 @@ body {
 	.top-tool-bar(@teal-drop);
 }
 
+.sprite-edit-view .sprite-edit-tool-bar .return-to-project-sprite-list-mode {
+	.large-action(@whitetrash);
+}
+
 /* SPRITE EDITING CONTEXT */
 
 .sprite-edit-view .sprite-editor-container {
@@ -169,6 +173,15 @@ body {
 
 .sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel,.sprite-view-panel {
 	position : relative;
+}
+
+.sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel {
+	background-color : @white;
+	overflow : scroll;
+}
+
+.sprite-edit-view .sprite-editor-container .edit-context-container .sprite-view-panel .rendered-sprite-container {
+	background-color : @white;
 }
 
 .sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel .rendered-sprite-container {

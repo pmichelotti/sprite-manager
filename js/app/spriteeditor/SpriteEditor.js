@@ -1,4 +1,4 @@
-define( [ 'sprite/EditableSprite', 'util/uniqueIdUtil' ], function( EditableSprite, uniqueIdUtil ) {
+define( [ 'sprite/EditableSprite', 'sprite/Size', 'util/uniqueIdUtil' ], function( EditableSprite, Size, uniqueIdUtil ) {
 
 	var SpriteEditor = function( options ) {
 
@@ -13,10 +13,15 @@ define( [ 'sprite/EditableSprite', 'util/uniqueIdUtil' ], function( EditableSpri
 			var frameSelf = this;
 
 			this.name = ko.observable();
+			this.width = ko.observable( 10 );
+			this.height = ko.observable( 10 );
+			this.pixelSize = ko.observable( 5 );
 
 			this.submit = function() {
-				self.addFrame( frameSelf.name() );
-				frameSelf.name( '' );
+				if ( frameSelf.name() ) {
+					self.addFrame( frameSelf.name(), frameSelf.width(), frameSelf.height(), frameSelf.pixelSize() );
+					frameSelf.clear();
+				}
 			};
 
 			this.clear = function() {
@@ -59,10 +64,12 @@ define( [ 'sprite/EditableSprite', 'util/uniqueIdUtil' ], function( EditableSpri
 			self.spriteFrameEditContext.setSpriteFrame( spriteFrame );
 		};
 
-		this.addFrame = function( name ) {
+		this.addFrame = function( name, width, height, pixelSize ) {
 			var newSpriteFrame = self.sprite().addSpriteFrame( {
 				id : uniqueIdUtil( name ),
-				name : name
+				name : name,
+				size : new Size( width, height ),
+				pixelSize : pixelSize
 			} );
 
 			self.spriteFrameEditContext.setSpriteFrame( newSpriteFrame );

@@ -79,21 +79,85 @@
 			</div>
 			<section class="sprite-editor-container" data-bind="with: projectEditor.spriteEditor">
 				<div class="row">
-					<div class="col-md-8">
-						<h2 data-bind="with: sprite"><span data-bind="text: name"></span></h2>
+					<div class="col-md-12">
+						<!-- START TOOLS -->
+						<div class="sprite-editor-tool-bar">
+							<!-- SAVE BUTTON -->
+							<div class="sprite-edit-context-toolbar pull-right" data-bind="visible: spriteFrameEditContext.spriteFrame">
+								<button type="button" class="btn btn-success" data-bind="click: saveCurrentSpriteFrame"><i class="icon-large icon-save"></i> Save</button>
+							</div>
+							<!-- END SAVE BUTTON -->
+							<h2 data-bind="with: sprite"><span data-bind="text: name"></span></h2>
+
+							<div class="row sprite-tool-container">
+								<!-- START FRAMES -->
+								<div class="col-md-6">
+									<div class="sprite-frames-container">
+										<h3>Frames</h3>
+										<div data-bind="with: sprite">
+											<ul class="sprite-frame-list" data-bind="foreach: spriteFrames">
+												<li>
+													<span class="sprite-frame-name" data-bind="text: name"></span>
+													<button type="button" class="btn btn-primary" data-bind="click: $parents[1].editFrame"><span class="icon-large icon-edit"></span></button>
+													<button type="button" class="btn btn-primary" data-bind="click: $parents[1].copyFrame"><span class="icon-large icon-copy"></span></button>
+													<button type="button" class="btn btn-warning" data-bind="click: $parents[1].deleteFrame"><span class="icon-large icon-trash"></span></button>
+												</li>
+											</ul>
+										</div>
+										<div data-bind="with: newFrameForm">
+											<form data-bind="submit: submit">
+												<label>Width <input type="number" name="width" data-bind="value: width" /></label>
+												<label>Height <input type="number" name="height" data-bind="value: height" /></label>
+												<label>Pixel Size <input type="number" name="pixelSize" data-bind="value: pixelSize" /></label>
+												<label>Name <input type="text" name="name" data-bind="value: name" /></label>
+												<button type="submit" class="btn btn-primary">New Frame</button>
+											</form>
+										</div>
+									</div>
+								</div>
+								<!-- END FRAMES -->
+
+								<!-- START GROUPS -->
+								<div class="col-md-6">
+									<div class="sprite-groups-container">
+										<h3>Groups</h3>
+										<div data-bind="with: sprite">
+											<ul class="sprite-group-list" data-bind="foreach: spriteFrameGroups">
+												<li>
+													<span class="sprite-group-name" data-bind="text: name"></span>
+													<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
+													<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-trash"></span></button>
+												</li>
+											</ul>
+										</div>
+										<div data-bind="with: newGroupForm">
+											<form data-bind="submit: submit">
+												<input type="text" name="name" data-bind="value: name" />
+												<button type="submit" class="btn btn-primary">New Group</button>
+											</form>
+										</div>
+									</div>
+								</div>
+								<!-- END GROUPS -->
+							</div>
+						</div>
+						<!-- END TOOLS -->
+
+
+
 						<!-- START EDIT CONTEXT -->
 
 						<section class="edit-context-container" data-bind="with: spriteFrameEditContext">
 
 							<div class="row">
-								<div class="col-md-8">
+								<div class="col-md-9">
 									<div class="sprite-edit-panel" data-bind="spritearea: editPanel">
 									</div>
 									<div class="sprite-frame-tool-bar">
 										<span data-bind="with: spriteFrame">Editing <em data-bind="text: name"></em></span>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-3">
 									<div class="view-panel-container">
 										<h3>View</h3>
 										<div class="sprite-view-panel" data-bind="spritearea: viewPanel"></div>
@@ -120,55 +184,9 @@
 
 						</section>
 
-						<div class="sprite-edit-context-toolbar">
-							<button type="button" class="btn btn-success" data-bind="click: saveCurrentSpriteFrame">Save</button>
-						</div>
+
 
 						<!-- END EDIT CONTEXT -->
-					</div>
-					<div class="col-md-4">
-						<!-- START FRAMES -->
-						<div class="sprite-frames-container">
-							<h3>Frames</h3>
-							<div data-bind="with: sprite">
-								<ul class="sprite-frame-list" data-bind="foreach: spriteFrames">
-									<li>
-										<span class="sprite-frame-name" data-bind="text: name"></span>
-										<button type="button" class="btn btn-primary" data-bind="click: $parents[1].editFrame"><span class="glyphicon glyphicon-pencil"></span></button>
-										<button type="button" class="btn btn-primary" data-bind="click: $parents[1].copyFrame"><span class="glyphicon glyphicon-plus"></span></button>
-										<button type="button" class="btn btn-warning" data-bind="click: $parents[1].deleteFrame"><span class="glyphicon glyphicon-trash"></span></button>
-									</li>
-								</ul>
-							</div>
-							<div data-bind="with: newFrameForm">
-								<form data-bind="submit: submit">
-									<input type="text" name="name" data-bind="value: name" />
-									<button type="submit" class="btn btn-primary">New Frame</button>
-								</form>
-							</div>
-						</div>
-						<!-- END FRAMES -->
-
-						<!-- START GROUPS -->
-						<div class="sprite-groups-container">
-							<h3>Groups</h3>
-							<div data-bind="with: sprite">
-								<ul class="sprite-group-list" data-bind="foreach: spriteFrameGroups">
-									<li>
-										<span class="sprite-group-name" data-bind="text: name"></span>
-										<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button>
-										<button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-trash"></span></button>
-									</li>
-								</ul>
-							</div>
-							<div data-bind="with: newGroupForm">
-								<form data-bind="submit: submit">
-									<input type="text" name="name" data-bind="value: name" />
-									<button type="submit" class="btn btn-primary">New Group</button>
-								</form>
-							</div>
-						</div>
-						<!-- END GROUPS -->
 					</div>
 				</div>
 			</section>
