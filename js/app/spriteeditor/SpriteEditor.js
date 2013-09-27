@@ -68,6 +68,14 @@ define( [ 'sprite/EditableSprite', 'util/uniqueIdUtil' ], function( EditableSpri
 				name : name
 			} );
 		};
+
+		this.saveSprite = function() {
+			return self.sprite().save();
+		};
+
+		this.clear = function() {
+			//TODO
+		};
 	};
 
 	return SpriteEditor;

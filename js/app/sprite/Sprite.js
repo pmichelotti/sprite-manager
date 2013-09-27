@@ -12,6 +12,9 @@ define( [], function() {
 		this.spriteFrameGroups = options.spriteFrameGroups || Array();
 		this.labels = options.labels || Array();
 
+		this.frameCount = this.spriteFrames.length;
+		this.frameGroupCount = this.spriteFrameGroups.length;
+
 	};
 
 	return Sprite;

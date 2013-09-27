@@ -5,43 +5,59 @@
 		<script type="text/javascript" src="js/libs/jquery-2.0.3.js"></script>
 
 		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
-		<link href="css/app.css" rel="stylesheet" media="screen">
+		<link href="css/font-awesome.css" rel="stylesheet" media="screen">
+		<link href="css/app-test.css" rel="stylesheet" media="screen">
 	</head>
 	<body>
 
-		<div class="application-container container" data-bind="visible: isProjectListMode">
+		<section class="project-list-container container" data-bind="visible: isProjectListMode">
 
-			<div class="application-inner-container">
+			<div class="project-list-inner-container">
 				<ul class="project-list" data-bind="foreach: projects">
-					<li data-bind="click: $parent.editProject"><span data-bind="text: name"></span></li>
+					<li class="project-button" data-bind="click: $parent.editProject"><h2><span class="pad-right" data-bind="text:name"></span><i class="icon-large icon-chevron-right"></i></h2>
+						<div class="project-info-container">
+							<p>Contains <span data-bind="text: spriteCount"></span> Sprites</p>
+						</div>
+					</li>
 				</ul>
-				<div data-bind="with: projectForm">
+				<div class="new-project-form" data-bind="with: projectForm">
 					<form data-bind="submit: submit">
-						<input type="text" name="name" data-bind="value: name" />
+						<input class="thick-input margin-right" type="text" name="name" data-bind="value: name" />
 						<button type="submit" class="btn btn-primary">New Project</button>
 					</form>
 				</div>
 			</div>
 
-		</div>
+		</section>
 		<!-- START SPRITE LIST VIEW -->
 		<section class="project-sprite-view" data-bind="visible: isProjectSpriteListMode">
-			<div class="return-to-project-list-button" data-bind="click: returnToProjectListView"><i class="glyphicon glyphicon-backward"></i> Project List</div>
-			<div data-bind="with: projectEditor">
+			<div class="return-to-project-list-button" data-bind="click: returnToProjectListView"><i class="icon-large icon-chevron-left"></i> Project List</div>
+			<div class="container" data-bind="with: projectEditor">
 				<h1 data-bind="with: project"><span data-bind="text: name"></span></h1>
 
-				<div class="sprite-list-container" data-bind="with: project">
+				<div class="sprite-list-container clearfix" data-bind="with: project">
 					<ul data-bind="foreach: sprites">
-						<li>
-							<span data-bind="text: name"></span>
-							<button class="btn btn-primary" data-bind="click: $parents[1].editSprite"><i class="glyphicon glyphicon-pencil"></i></button>
-							<button class="btn btn-warning" data-bind="click: $parents[1].removeSprite"><i class="glyphicon glyphicon-trash"></i></button>
+						<li class="sprite-list-item clearfix">
+							<div class="sprite-name-and-image">
+								<h4 data-bind="text: name"></h4>
+								<div class="sprite-first-frame-container" data-bind="if: frameCount">
+									<div data-bind="spritearea: $parents[1].spriteViewContext( $data )"></div>
+								</div>
+							</div>
+							<div class="sprite-details">
+								<p>Contains <span data-bind="text: frameCount"></span> Frames</p>
+								<p>Contains <span data-bind="text: frameGroupCount"></span> Frame Groups</p>
+							</div>
+							<div class="sprite-controls pull-right">
+								<button class="btn btn-primary" data-bind="click: $parents[1].editSprite"><i class="icon-large icon-edit"></i></button>
+								<button class="btn btn-warning" data-bind="click: $parents[1].removeSprite"><i class="icon-large icon-trash"></i></button>
+							</div>
 						</li>
 					</ul>
 				</div>
-				<div data-bind="with: spriteForm">
+				<div class="new-sprite-form" data-bind="with: spriteForm">
 					<form data-bind="submit: submit">
-						<input type="text" name="name" data-bind="value: name" />
+						<input class="thick-input margin-right" type="text" name="name" data-bind="value: name" />
 						<button type="submit" class="btn btn-primary">New Sprite</button>
 					</form>
 				</div>

@@ -2,8 +2,9 @@ define(
 		[ 'sprite/SpriteFrame',
 		  'sprite/SpriteFrameGroup',
 		  'sprite/EditableSpriteFrameGroup',
-		  'util/uniqueIdUtil'],
-		function( SpriteFrame, SpriteFrameGroup, EditableSpriteFrameGroup, uniqueIdUtil ) {
+		  'util/uniqueIdUtil',
+		  'sprite/Sprite'],
+		function( SpriteFrame, SpriteFrameGroup, EditableSpriteFrameGroup, uniqueIdUtil, Sprite ) {
 
 	var EditableSprite = function( sprite ) {
 
@@ -120,7 +121,14 @@ define(
 		};
 
 		this.save = function() {
-			//TODO
+
+			return new Sprite( self.sprite.id, {
+				name : self.name(),
+				spriteFrames : self.spriteFrames(),
+				spriteFrameGroups : self.spriteFrameGroups(),
+				labels : self.labels()
+			} );
+
 		};
 	};
 

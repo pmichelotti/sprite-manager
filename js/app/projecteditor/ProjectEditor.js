@@ -1,4 +1,4 @@
-define( [ 'project/EditableProject', 'sprite/Sprite', 'util/uniqueIdUtil' ], function( EditableProject, Sprite, uniqueIdUtil ) {
+define( [ 'project/EditableProject', 'sprite/Sprite', 'projecteditor/panel/SimpleViewPanel', 'util/uniqueIdUtil' ], function( EditableProject, Sprite, SimpleViewPanel, uniqueIdUtil ) {
 
 	var ProjectEditor = function( options ) {
 
@@ -11,6 +11,8 @@ define( [ 'project/EditableProject', 'sprite/Sprite', 'util/uniqueIdUtil' ], fun
 		this.project = ko.observable();
 
 		this.mode = ko.observable( 'sprite-view' );
+
+		var spriteRenderer = options.spriteRenderer;
 
 		this.isSpriteViewMode = ko.computed( function() {
 			return self.mode() === 'sprite-view';
@@ -27,7 +29,10 @@ define( [ 'project/EditableProject', 'sprite/Sprite', 'util/uniqueIdUtil' ], fun
 			this.name = ko.observable();
 
 			this.submit = function() {
-				self.addSprite( spriteSelf.name() );
+				if ( spriteSelf.name() ) {
+					self.addSprite( spriteSelf.name() );
+					spriteSelf.name( '' );
+				}
 			};
 
 		};
@@ -70,13 +75,39 @@ define( [ 'project/EditableProject', 'sprite/Sprite', 'util/uniqueIdUtil' ], fun
 		};
 
 		this.returnToSpriteView = function() {
+
+			//TODO Update so that it asks if you want to save
+			var savedSprite = self.spriteEditor.saveSprite();
+
+			self.project().updateSprite( savedSprite );
+
+			self.spriteEditor.clear();
+
 			self.mode( 'sprite-view' );
+
 		};
 
 		this.save = function() {
 			if ( self.project() && self.persistenceManager ) {
 				self.persistenceManager.saveProject( self.project().save() );
 			}
+		};
+
+		this.spriteViewContext = function( sprite ) {
+			var editContext = {
+				spriteFrame : function() {
+					if ( sprite.spriteFrames.length ) {
+						return sprite.spriteFrames[ 0 ];
+					}
+
+					return null;
+				}
+			};
+
+			return new SimpleViewPanel( {
+				spriteRenderer : spriteRenderer,
+				context : editContext
+			} );
 		};
 
 	};

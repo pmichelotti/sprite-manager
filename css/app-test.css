@@ -1,0 +1,177 @@
+/* http://www.colourlovers.com/palette/46688/fresh_cut_day */
+/* UTILITIES */
+.unstyled-list {
+  list-style-type: none;
+  list-style-position: outside;
+  padding: 0px;
+}
+.pad-right {
+  padding-right: 15px;
+}
+.margin-right {
+  margin-right: 15px;
+}
+input.thick-input {
+  width: 50%;
+  font-size: 25px;
+}
+/* BODY STYLES */
+body {
+  background-color: #f9f2e7;
+}
+/* PROJECT STYLES */
+.project-list-container ul.project-list {
+  list-style-type: none;
+  list-style-position: outside;
+  padding: 0px;
+}
+.project-list-container .project-button {
+  width: 60%;
+  text-align: center;
+  padding: 25px;
+  border-radius: 20px;
+  background-color: #aee239;
+  border: 1px solid #aae130;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 20px auto;
+}
+.project-list-container .project-button:hover {
+  background-color: #b7e54f;
+}
+.project-list-container .project-button:active {
+  background-color: #a5df23;
+  box-shadow: 0px 0px 2px 4px #95ca1e inset;
+}
+.project-list-container .new-project-form {
+  width: 60%;
+  text-align: center;
+  padding: 25px;
+  border-radius: 20px;
+  background-color: #8fbe00;
+  border: 1px solid #87b400;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 20px auto;
+}
+.project-list-container .new-project-form:hover {
+  background-color: #a2d800;
+}
+.project-list-container .new-project-form:active {
+  background-color: #7ca500;
+  box-shadow: 0px 0px 2px 4px #698b00 inset;
+}
+.project-list-container .project-button h2 {
+  letter-spacing: 2px;
+  font-size: 50px;
+  font-weight: bold;
+}
+.project-list-container .new-project-form button[type=submit] {
+  vertical-align: 20%;
+}
+.project-list-container .project-button .project-info-container {
+  text-align: left;
+}
+/* PROJECT SPRITE LIST */
+.project-sprite-view {
+  padding: 25px;
+}
+.project-sprite-view .return-to-project-list-button {
+  color: #00a8c6;
+  font-size: 20px;
+  cursor: pointer;
+}
+.project-sprite-view .return-to-project-list-button:hover {
+  color: #009bb7;
+}
+.project-sprite-view .new-sprite-form {
+  width: 60%;
+  text-align: center;
+  padding: 25px;
+  border-radius: 20px;
+  background-color: #40c0cb;
+  border: 1px solid #38bdc9;
+  color: #ffffff;
+  cursor: pointer;
+  margin: 10px auto;
+}
+.project-sprite-view .new-sprite-form:hover {
+  background-color: #54c7d0;
+}
+.project-sprite-view .new-sprite-form:active {
+  background-color: #34b3be;
+  box-shadow: 0px 0px 2px 4px #2ea0aa inset;
+}
+.project-sprite-view .new-sprite-form button[type=submit] {
+  vertical-align: 20%;
+}
+.project-sprite-view .sprite-list-container ul {
+  list-style-type: none;
+  list-style-position: outside;
+  padding: 0px;
+}
+.project-sprite-view .sprite-list-container .sprite-list-item {
+  width: 60%;
+  text-align: center;
+  padding: 25px;
+  border-radius: 20px;
+  background-color: #40c0cb;
+  border: 1px solid #38bdc9;
+  color: #ffffff;
+  cursor: pointer;
+  width: auto;
+  margin: 10px 15px 10px 0px;
+  float: left;
+  text-align: left;
+}
+.project-sprite-view .sprite-list-container .sprite-list-item:hover {
+  background-color: #54c7d0;
+}
+.project-sprite-view .sprite-list-container .sprite-list-item:active {
+  background-color: #34b3be;
+  box-shadow: 0px 0px 2px 4px #2ea0aa inset;
+}
+.project-sprite-view .sprite-list-container .sprite-list-item p {
+  margin: 0px;
+}
+.project-sprite-view .sprite-list-container .sprite-list-item .sprite-first-frame-container {
+  position: relative;
+  background-color: #ffffff;
+}
+/* OLD STYLES */
+/* Edit Context */
+section.edit-context-container {
+  margin: 25px;
+}
+.sprite-edit-panel {
+  position: relative;
+}
+.sprite-view-panel {
+  position: relative;
+}
+.sprite-edit-panel .rendered-sprite-container {
+  background-image: url('../img/sprite-editor-background.png');
+}
+.rendered-sprite-pixel:hover {
+  box-shadow: 5 -5 #ccccff inset;
+}
+.tool-panel .tool-list {
+  list-style-type: none;
+  padding: 0px;
+}
+.tool-panel .tool-list > li {
+  padding: 5px 0px;
+}
+/* Sprite Frame List */
+.sprite-frames-container .sprite-frame-list {
+  list-style-type: none;
+  padding: 0px;
+}
+.sprite-frames-container .sprite-frame-list > li {
+  padding: 10px;
+}
+/* Sprite Group List */
+.sprite-groups-container .sprite-group-list {
+  list-style-type: none;
+  padding: 0px;
+}

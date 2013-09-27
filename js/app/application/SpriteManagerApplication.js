@@ -35,7 +35,10 @@ define( [ 'project/Project', 'util/uniqueIdUtil' ], function( Project, uniqueIdU
 			this.name = ko.observable();
 
 			this.submit = function() {
-				self.addProject( projectSelf.name() );
+				if ( projectSelf.name() ) {
+					self.addProject( projectSelf.name() );
+					projectSelf.name( '' );
+				}
 			};
 
 		};

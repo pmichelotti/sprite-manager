@@ -27,6 +27,26 @@ define( [ 'sprite/EditableSprite', 'project/Project'], function( EditableSprite,
 			return sprite;
 		};
 
+		this.updateSprite = function( sprite ) {
+
+			var spritesWithTheSameId = self.sprites().filter( function( curSprite ) {
+				return curSprite.id === sprite.id;
+			} );
+
+			if ( spritesWithTheSameId.length === 0 ) {
+				return;
+			}
+
+			if ( spritesWithTheSameId.length > 1 ) {
+				throw "An error has occurred resulting in multiple sprites with the same id " + sprite.id + " in the project";
+			}
+
+			var spriteIndex = self.sprites.indexOf( spritesWithTheSameId[ 0 ] );
+
+			self.sprites.splice( spriteIndex, 1, sprite );
+
+		};
+
 		this.save = function() {
 
 			return new Project( self.project.id, {

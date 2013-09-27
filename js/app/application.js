@@ -47,7 +47,8 @@ define( [
 
 	var projectEditor = new ProjectEditor( {
 		persistenceManager : persistenceManager,
-		spriteEditor : spriteEditor
+		spriteEditor : spriteEditor,
+		spriteRenderer : spriteRenderer
 	} );
 
 	var application = new SpriteManagerApplication( {
