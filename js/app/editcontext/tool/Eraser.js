@@ -4,7 +4,7 @@ define( [ 'sprite/VirtualPixel' ], function( VirtualPixel ) {
 
 		this.name = "Eraser";
 		this.id = "eraser-tool";
-		this.icon = "glyphicon-asterisk";
+		this.icon = "icon-eraser";
 
 		this.listeners = {
 			"click" : function( event, editContext, eventEliciter, parameters ) {

@@ -58,4 +58,6 @@ define( [
 
 	ko.applyBindings( application );
 
+	application.load();
+
 } );

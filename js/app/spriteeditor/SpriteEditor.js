@@ -16,6 +16,11 @@ define( [ 'sprite/EditableSprite', 'util/uniqueIdUtil' ], function( EditableSpri
 
 			this.submit = function() {
 				self.addFrame( frameSelf.name() );
+				frameSelf.name( '' );
+			};
+
+			this.clear = function() {
+				frameSelf.name( '' );
 			};
 
 		};
@@ -28,11 +33,17 @@ define( [ 'sprite/EditableSprite', 'util/uniqueIdUtil' ], function( EditableSpri
 
 			this.submit = function() {
 				self.addGroup( groupSelf.name() );
+				groupSelf.name( '' );
+			};
+
+			this.clear = function() {
+				groupSelf.name( '' );
 			};
 		};
 
 		this.setSprite = function( sprite ) {
-			this.sprite( new EditableSprite( sprite ) );
+			self.spriteFrameEditContext.clear();
+			self.sprite( new EditableSprite( sprite ) );
 		};
 
 		this.editFrame = function( spriteFrame ) {
@@ -74,7 +85,10 @@ define( [ 'sprite/EditableSprite', 'util/uniqueIdUtil' ], function( EditableSpri
 		};
 
 		this.clear = function() {
-			//TODO
+			self.sprite( null );
+			self.spriteFrameEditContext.clear();
+			self.newFrameForm.clear();
+			self.newGroupForm.clear();
 		};
 	};
 

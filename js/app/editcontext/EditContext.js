@@ -50,6 +50,11 @@ define( [ 'sprite/EditableSpriteFrame' ], function( EditableSpriteFrame ) {
 			self.viewPanel.dirty( true );
 		};
 
+		this.clear = function() {
+			self.spriteFrame( null );
+			self.setDirty();
+		};
+
 	};
 
 	return EditContext;

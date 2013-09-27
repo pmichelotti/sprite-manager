@@ -31,8 +31,13 @@
 		</section>
 		<!-- START SPRITE LIST VIEW -->
 		<section class="project-sprite-view" data-bind="visible: isProjectSpriteListMode">
-			<div class="return-to-project-list-button" data-bind="click: returnToProjectListView"><i class="icon-large icon-chevron-left"></i> Project List</div>
-			<div class="container" data-bind="with: projectEditor">
+			<div class="project-tool-bar">
+				<div class="project-editor-buttons pull-right" data-bind="with: projectEditor">
+					<button type="button" class="btn btn-primary" data-bind="click: save"><i class="icon-large icon-save"></i></button>
+				</div>
+				<div class="return-to-project-list-button" data-bind="click: returnToProjectListView"><i class="icon-large icon-chevron-left"></i> Project List</div>
+			</div>
+			<div class="container project-sprite-view-container" data-bind="with: projectEditor">
 				<h1 data-bind="with: project"><span data-bind="text: name"></span></h1>
 
 				<div class="sprite-list-container clearfix" data-bind="with: project">
@@ -67,8 +72,11 @@
 
 		<!-- START SPRITE EDIT VIEW -->
 		<section class="sprite-edit-view" data-bind="visible: isProjectSpriteEditMode">
-			<div class="return-to-project-sprite-list-mode" data-bind="click: projectEditor.returnToSpriteView"><i class="glyphicon glyphicon-backward"></i> Sprite List</div>
-
+			<div class="sprite-edit-tool-bar">
+				<div class="sprite-edit-buttons pull-right">
+				</div>
+				<div class="return-to-project-sprite-list-mode" data-bind="click: projectEditor.returnToSpriteView"><i class="icon-large icon-chevron-up"></i> Sprite List</div>
+			</div>
 			<section class="sprite-editor-container" data-bind="with: projectEditor.spriteEditor">
 				<div class="row">
 					<div class="col-md-8">
@@ -92,8 +100,10 @@
 									</div>
 									<div class="tool-panel">
 										<h3>Tools</h3>
-										<ul class="tool-list" data-bind="foreach: tools">
-											<li data-bind="click: $parent.currentTool"><i data-bind="attr: { 'class' : 'glyphicon ' + icon }"></i></li>
+										<ul class="tool-list clearfix" data-bind="foreach: tools">
+											<li data-bind="click: $parent.currentTool">
+												<button type="button" class="btn btn-primary"><i data-bind="attr: { 'class' : 'icon-large ' + icon }"></i></button>
+											</li>
 										</ul>
 										<p data-bind="with: currentTool"><em>Current Tool: </em><span data-bind="text: name"></span></p>
 									</div>

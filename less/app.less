@@ -30,6 +30,11 @@
 
 }
 
+.top-tool-bar(@color) {
+	background-color : @color;
+	padding : 10px;
+}
+
 /* UTILITIES */
 
 .large-action(@color) {
@@ -66,7 +71,8 @@ body {
 	background-color : @whitetrash;
 }
 
-/* PROJECT STYLES */
+/* PROJECT BROWSER STYLES */
+
 .project-list-container ul.project-list {
 	.unstyled-list;
 }
@@ -95,15 +101,22 @@ body {
 	text-align : left;
 }
 
-/* PROJECT SPRITE LIST */
-.project-sprite-view {
+/***********************************************/
+/* PROJECT SPRITE LIST / PROJECT EDITOR STYLES */
+/***********************************************/
+
+.project-sprite-view .project-sprite-view-container {
 
 	padding : 25px;
 
 }
 
+.project-sprite-view .project-tool-bar {
+	.top-tool-bar(@feeble-week);
+}
+
 .project-sprite-view .return-to-project-list-button {
-	.large-action(@tropiteal);
+	.large-action(@whitetrash);
 }
 
 .project-sprite-view .new-sprite-form {
@@ -136,38 +149,43 @@ body {
 	background-color : @white;
 }
 
-/* OLD STYLES */
-/* Edit Context */
-section.edit-context-container {
+/*****************/
+/* SPRITE EDITOR */
+/*****************/
+
+.sprite-edit-view .sprite-edit-tool-bar {
+	.top-tool-bar(@teal-drop);
+}
+
+/* SPRITE EDITING CONTEXT */
+
+.sprite-edit-view .sprite-editor-container {
+	padding : 25px;
+}
+
+.sprite-edit-view .sprite-editor-container .edit-context-container {
 	margin : 25px;
 }
 
-.sprite-edit-panel {
+.sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel,.sprite-view-panel {
 	position : relative;
 }
 
-.sprite-view-panel {
-	position : relative;
-}
-
-.sprite-edit-panel .rendered-sprite-container {
+.sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel .rendered-sprite-container {
 	background-image:url( '../img/sprite-editor-background.png' );
 }
 
-.rendered-sprite-pixel:hover {
-	box-shadow : 5 -5 #CCCCFF inset;
+.sprite-edit-view .sprite-editor-container .edit-context-container .tool-panel .tool-list {
+	.unstyled-list;
 }
 
-.tool-panel .tool-list {
-	list-style-type : none;
-	padding : 0px;
+.sprite-edit-view .sprite-editor-container .edit-context-container .tool-panel .tool-list > li {
+	margin : 0px 5px 5px 0px;
+	float : left;
 }
 
-.tool-panel .tool-list > li {
-	padding : 5px 0px;
-}
+/* SPRITE FRAME LIST */
 
-/* Sprite Frame List */
 .sprite-frames-container .sprite-frame-list {
 	list-style-type : none;
 	padding : 0px;
@@ -177,8 +195,10 @@ section.edit-context-container {
 	padding : 10px;
 }
 
-/* Sprite Group List */
+/* SPRITE FRAME GROUP LIST */
+
 .sprite-groups-container .sprite-group-list {
 	list-style-type : none;
 	padding : 0px;
 }
+

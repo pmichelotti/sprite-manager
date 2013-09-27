@@ -19,7 +19,7 @@ input.thick-input {
 body {
   background-color: #f9f2e7;
 }
-/* PROJECT STYLES */
+/* PROJECT BROWSER STYLES */
 .project-list-container ul.project-list {
   list-style-type: none;
   list-style-position: outside;
@@ -72,17 +72,23 @@ body {
 .project-list-container .project-button .project-info-container {
   text-align: left;
 }
-/* PROJECT SPRITE LIST */
-.project-sprite-view {
+/***********************************************/
+/* PROJECT SPRITE LIST / PROJECT EDITOR STYLES */
+/***********************************************/
+.project-sprite-view .project-sprite-view-container {
   padding: 25px;
 }
+.project-sprite-view .project-tool-bar {
+  background-color: #8fbe00;
+  padding: 10px;
+}
 .project-sprite-view .return-to-project-list-button {
-  color: #00a8c6;
+  color: #f9f2e7;
   font-size: 20px;
   cursor: pointer;
 }
 .project-sprite-view .return-to-project-list-button:hover {
-  color: #009bb7;
+  color: #f6ebdb;
 }
 .project-sprite-view .new-sprite-form {
   width: 60%;
@@ -138,31 +144,37 @@ body {
   position: relative;
   background-color: #ffffff;
 }
-/* OLD STYLES */
-/* Edit Context */
-section.edit-context-container {
+/*****************/
+/* SPRITE EDITOR */
+/*****************/
+.sprite-edit-view .sprite-edit-tool-bar {
+  background-color: #40c0cb;
+  padding: 10px;
+}
+/* SPRITE EDITING CONTEXT */
+.sprite-edit-view .sprite-editor-container {
+  padding: 25px;
+}
+.sprite-edit-view .sprite-editor-container .edit-context-container {
   margin: 25px;
 }
-.sprite-edit-panel {
-  position: relative;
-}
+.sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel,
 .sprite-view-panel {
   position: relative;
 }
-.sprite-edit-panel .rendered-sprite-container {
+.sprite-edit-view .sprite-editor-container .edit-context-container .sprite-edit-panel .rendered-sprite-container {
   background-image: url('../img/sprite-editor-background.png');
 }
-.rendered-sprite-pixel:hover {
-  box-shadow: 5 -5 #ccccff inset;
-}
-.tool-panel .tool-list {
+.sprite-edit-view .sprite-editor-container .edit-context-container .tool-panel .tool-list {
   list-style-type: none;
+  list-style-position: outside;
   padding: 0px;
 }
-.tool-panel .tool-list > li {
-  padding: 5px 0px;
+.sprite-edit-view .sprite-editor-container .edit-context-container .tool-panel .tool-list > li {
+  margin: 0px 5px 5px 0px;
+  float: left;
 }
-/* Sprite Frame List */
+/* SPRITE FRAME LIST */
 .sprite-frames-container .sprite-frame-list {
   list-style-type: none;
   padding: 0px;
@@ -170,7 +182,7 @@ section.edit-context-container {
 .sprite-frames-container .sprite-frame-list > li {
   padding: 10px;
 }
-/* Sprite Group List */
+/* SPRITE FRAME GROUP LIST */
 .sprite-groups-container .sprite-group-list {
   list-style-type: none;
   padding: 0px;

@@ -4,7 +4,7 @@ define( [], function() {
 
 		this.name = "Eye Dropper";
 		this.id = "eye-dropper";
-		this.icon = "glyphicon-tint";
+		this.icon = "icon-tint";
 
 		this.listeners = {
 			"click" : function( event, editContext, eventEliciter, parameters ) {

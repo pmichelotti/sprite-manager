@@ -2,6 +2,8 @@ define( [], function() {
 
 	var Project = function( id, options ) {
 
+		var self = this;
+
 		options = options || {};
 
 		this.id = id;
@@ -20,6 +22,9 @@ define( [], function() {
 			this.sprites.forEach( function( curSprite ) {
 				retObject[ 'sprites' ].push( curSprite.toJSON() );
 			} );
+
+			return retObject;
+
 		};
 	};
 

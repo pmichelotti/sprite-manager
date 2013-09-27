@@ -2,6 +2,8 @@ define( [ 'sprite/Size', 'sprite/VirtualPixel', 'util/uniqueIdUtil' ], function(
 
 	var SpriteFrame = function( id, options ) {
 
+		var self = this;
+
 		options = options || {};
 
 		this.name = options.name || id;
@@ -11,9 +13,35 @@ define( [ 'sprite/Size', 'sprite/VirtualPixel', 'util/uniqueIdUtil' ], function(
 		this.pixelSize = options.pixelSize || 10;
 
 		/*
-		 * A matrix of pixels.  The outer array represents rows while the inner arrays represent columns
+		 * A matrix of pixels.  The outer array represents x while the inner arrays represent y
 		 */
 		this.pixels = options.pixels;
+
+		this.toJSON = function() {
+
+			var retObject = {};
+
+			retObject[ 'id' ] = self.id;
+			retObject[ 'name' ] = self.name;
+			retObject[ 'size' ] = self.size.toJSON();
+			retObject[ 'pixelSize' ] = self.pixelSize;
+
+			var pixelsJSON = Array();
+
+			self.pixels.forEach( function( curColumn ) {
+				var pixelJSONColumn = Array();
+
+				curColumn.forEach( function( curColumnItem ) {
+					pixelJSONColumn.push( curColumnItem.toJSON() );
+				} );
+
+				pixelsJSON.push( pixelJSONColumn );
+			} );
+
+			retObject[ 'pixels' ] = pixelsJSON;
+
+			return retObject;
+		};
 
 	};
 

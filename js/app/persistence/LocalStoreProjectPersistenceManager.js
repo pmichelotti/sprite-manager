@@ -105,9 +105,9 @@ define( [ 'project/Project', 'sprite/Sprite', 'sprite/SpriteFrameGroup', 'sprite
 			return new Sprite( json.id, spriteOptions );
 		};
 
-		this.loadProject = function( project ) {
+		this.loadProject = function( projectId ) {
 
-			var storageKey = STORAGE_KEY_PREFIX + project.id;
+			var storageKey = STORAGE_KEY_PREFIX + projectId;
 
 			var projectJson = JSON.parse( localStorage[ storageKey ] );
 
@@ -118,7 +118,7 @@ define( [ 'project/Project', 'sprite/Sprite', 'sprite/SpriteFrameGroup', 'sprite
 
 			if ( projectJson.sprites && projectJson.sprites.length ) {
 				projectJson.sprites.forEach( function( curSpriteJSON ) {
-					projectOptions.push( createSpriteFromJSON( curSpriteJSON ) );
+					projectOptions.sprites.push( createSpriteFromJSON( curSpriteJSON ) );
 				} );
 			}
 
